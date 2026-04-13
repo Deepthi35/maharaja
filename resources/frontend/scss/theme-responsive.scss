@@ -1,0 +1,992 @@
+//
+//
+// theme-responsive.scss
+//
+// Place your own custom CSS or SCSS rules below this line, these rules will override any Bootstrap and theme variables.
+@media all and (max-width: 1921px) {
+    .container-xl,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container {
+        max-width: 1500px;
+    }
+    .btn {
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 700;
+        padding: 8px 20px;
+    }
+    .customize-btn {
+        font-size: 22px;
+        padding: 15px 45px;
+        border-radius: 12px;
+    }
+    header.navbar-dark .navbar-nav .nav-link {
+        font-size: 18px;
+    }
+    .special-products .product-block {
+        padding-right: 40px;
+    }
+    .about p {
+        max-width: 80%;
+    }
+    .footer-logo {
+        max-width: 450px;
+    }
+    .product-page .sticky-top {
+        top: 10px;
+    }
+    .home-slider .display-1 span {
+        font-size: 80px;
+    }
+    .home-slider .display-1 {
+        font-size: 60px;
+    }
+    .home-slider .lead span,
+    .delivered h3 {
+        font-size: 38px;
+        line-height: 48px;
+    }
+    .home-slider .lead,
+    .lead,
+    .vintage .card .h3 {
+        font-size: 26px;
+        line-height: 36px;
+    }
+    .section-title,
+    .display-4 {
+        font-size: 50px;
+    }
+    .section-title span,
+    .party-orders h3 {
+        font-size: 36px;
+    }
+    .menu-list .product-title,
+    .reviews-nav .inner h3,
+    .get-in-touch .card h3,
+    .contact-page .form .inner h2 {
+        font-size: 30px;
+        line-height: 36px;
+    }
+    .reviews .inner {
+        font-size: 24px;
+        line-height: 36px;
+    }
+    header .navbar-dark .navbar-nav .nav-link {
+        font-size: 16px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .special-products-inner .content .special-products-content h4,
+    .menu-list ul li,
+    .party-orders p,
+    .party-orders ul li,
+    .get-in-touch .card ul li {
+        font-size: 16px;
+    }
+    .special-products-inner .content .special-products-content h4 {
+        padding-right: 40px;
+    }
+    .product-page .list-group-item,
+    .hours-of-operation ul li {
+        font-size: 16px;
+    }
+    .delivered p,
+    .footer-nav li,
+    .social-share h5 {
+        font-size: 20px;
+    }
+    .special-products-inner .content .special-products-content p {
+        font-size: 15px;
+    }
+}
+@media all and (max-width: 1700px) {
+
+
+    .our-blog-post figure{height: 300px;}
+
+    .vintage .btn {
+        max-width: 95%;
+    }
+    .social-share .nav li a {
+        width: 55px;
+    }
+    .social-share1 .nav li a {
+        width: auto;
+    }
+    .social-share .nav li a.twitter {
+        width: 63px;
+    }
+    .social-share .nav li a.watsapp {
+        width: 60px;
+    }
+    .vintage .card .h3 {
+        margin-bottom: 38px;
+    }
+    .vintage .card p.lead {
+        margin-bottom: 10px;
+    }
+    .slick-dots li button {
+        width: 15px;
+        height: 15px;
+    }
+    .container-xl,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container {
+        max-width: 1300px;
+    }
+    .section-title,
+    .display-4 {
+        font-size: 42px;
+    }
+    .home-slider .lead,
+    .lead,
+    .vintage .card .h3 {
+        font-size: 20px;
+    }
+    .special-products-inner .pic figure {
+        height: 250px;
+    }
+    .contact-address-block {
+        flex: 0 0 41.6666666667%;
+        max-width: 41.6666666667%;
+    }
+    .contact-page .card.card-lg.card-body .item {
+        font-size: 14px;
+    }
+    .navbar-brand img {
+        max-height: 110px;
+    }
+    .about .pos-pic {
+        width: 200px;
+    }
+    .about .about-right-pic {
+        top: -98px;
+        margin-right: -108px;
+    }
+    section,
+    .special-products {
+        padding: 75px 0;
+    }
+    .map-block .get-in-touch {
+        padding: 135px 0 30px 80px;
+    }
+    .reviews .slick-arrow {
+        width: 80px;
+        height: 80px;
+    }
+    .reviews .slick-next::before {
+        width: 24px !important;
+        height: 40px !important;
+        left: 40%;
+        object-position: center;
+    }
+    .reviews .slick-prev::before {
+        width: 24px !important;
+        height: 40px !important;
+        object-position: center;
+        left: 28%;
+    }
+    .food-menu .section-title {
+        margin-bottom: 40px;
+    }
+    .food-menu .card {
+        padding: 70px 50px;
+    }
+    .delivered {
+        max-width: 90%;
+    }
+    .special-products-inner .content .special-products-content h4,
+    .menu-list ul li,
+    .party-orders p,
+    .party-orders ul li,
+    .get-in-touch .card ul li {
+        margin-bottom: 15px;
+    }
+    .delivered .delivered-pic {
+        max-width: 500px;
+    }
+    .product-page .menu-list ul li i {
+        font-size: 14px;
+    }
+    footer .container {
+        padding-top: 0px !important;
+    }
+    .special-products .product-block {
+        padding-right: 25px;
+    }
+    .special-products-inner .content .special-products-content {
+        padding: 20px;
+    }
+    .special-products-inner .content .special-products-content p {
+        font-size: 13px;
+        line-height: 20px;
+    }
+    .vintage-left-pic {
+        height: 630px !important;
+    }
+    .vintage-right-pic {
+        height: 300px !important;
+    }
+    .get-in-touch ul li {
+        margin: 0 20px;
+    }
+    .get-in-touch ul li::before {
+        left: -20px;
+    }
+    .about-left figure {
+        height: 500px;
+    }
+    .party-orders-right figure {
+        height: 700px;
+    }
+
+    // 1512 X 800
+    .home-slider .row {
+        margin-top: -100px;
+    }
+    .home-slider .inner-pic figure img{margin: 0 auto; max-width: 655px;}
+    .about-left figure{height: 450px;}
+    .about .pos-pic{width: 150px;}
+    .about .about-left-pic {
+  
+        bottom: -120px;
+        margin-left: -75px;
+    }
+
+    .about .about-right-pic {
+        top: -120px;
+        margin-right: -75px;
+    }
+
+    .food-menu .party-orders .card {
+        padding: 70px 50px;
+    }
+
+    .food-menu .party-orders .card {
+        padding: 25px 35px;
+    }
+    .party-orders .card .inner {
+        padding-right: 75px;
+    }
+    .party-orders-right{margin-top: 55px;}
+    .party-orders-right figure{height: 550px;}
+    .reviews-nav .inner figure{width: 75px; height: 75px;}
+    .reviews-nav .slick-active.slick-center .inner figure{width: 100px; height: 100px;}
+   .get-in-touch .col-md-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .social-share .nav li a {
+        width: 40px;
+    }
+    .social-share .nav li a.twitter {
+        width: 47px;
+    }
+    .social-share .nav li a.watsapp {
+        width: 44px;
+    }
+    .social-share1 .nav li a{width: auto;}
+    .social-share1 .nav li a img{height: 30px;}
+    footer{padding-top: 65px;}
+
+    .special-products-inner{margin: 0 !important;}
+
+    .latests-blocks figure{height: 250px;}
+
+    // 1512 X 800 end
+}
+@media all and (min-width: 1500px) and (max-width: 1700px) {
+    .container-xl,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container {
+        max-width: 1400px;
+    }
+    header.navbar-dark .navbar-nav .nav-link {
+        font-size: 20px;
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+}
+@media all and (max-width: 1400px) {
+
+    .get-in-title{font-size: 26px; line-height: 34px;}
+
+    .contact-page .get-in-touch ul li {
+        margin: 0 25px;
+    }
+    .contact-page .get-in-touch ul li::before {
+        left: -30px;
+    }
+    .contact-page .col-md-8 {
+        flex: 0 0 90%;
+        max-width: 90%;
+    }
+    .about-left figure {
+        height: 450px;
+    }
+    .party-orders-right figure {
+        height: 500px;
+    }
+    .map-block {
+        padding: 25px 0 35px 0;
+    }
+    .get-in-touch .card ul li a span {
+        font-size: 14px;
+    }
+    .food-menu .section-title {
+        margin-bottom: 25px;
+        padding-top: 18px;
+    }
+    .customize-btn {
+        font-size: 20px;
+        padding: 12px 45px;
+    }
+    .vintage-left-pic {
+        height: 585px !important;
+    }
+    .vintage-right-pic {
+        height: 280px !important;
+    }
+    .vintage .btn {
+        max-width: 90%;
+    }
+    .special-products-inner .content .special-products-content h4 {
+        padding-right: 40px;
+    }
+    .party-orders ul li {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .party-orders .card .inner {
+        padding-right: 60px;
+    }
+    .party-orders h3 {
+        font-size: 26px;
+    }
+    .party-orders p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .food-menu .card {
+        padding: 50px 25px;
+    }
+    .menu-list .product-title {
+        font-size: 20px;
+    }
+    .menu-list ul li {
+        font-size: 15px;
+    }
+    .special-products-inner .pic figure {
+        height: 200px;
+    }
+    .special-products .product-block {
+        padding-right: 10px;
+    }
+    .special-products-inner .content .special-products-content {
+        padding: 15px;
+    }
+    .special-products-inner .content .special-products-content h4 {
+        font-size: 15px;
+    }
+    .special-products-inner .content .special-products-content p {
+        font-size: 11px;
+        line-height: 20px;
+    }
+    .product-page .menu-list ul li {
+        font-size: 15px;
+    }
+    .product-page .menu-list ul li i {
+        font-size: 12px;
+    }
+    .hours-of-operation ul li {
+        font-size: 14px;
+    }
+    .delivered.hours-of-operation {
+        padding: 28px 30px 15px 30px;
+        max-width: 100%;
+    }
+    .delivered.hours-of-operation .delivered-pic {
+        max-width: 400px;
+    }
+    .food-menu .card.delivered {
+        padding: 30px;
+    }
+    .delivered .delivered-pic {
+        max-width: 450px;
+    }
+    .vintage .card .h3 {
+        margin-bottom: 20px;
+    }
+    .vintage .card p.lead {
+        margin-bottom: 20px;
+    }
+    .vintage .card {
+        padding: 15px;
+    }
+    .vintage .min-vh-70 {
+        min-height: 58vh;
+    }
+    .vintage .row.mb-5 {
+        margin-bottom: 20px !important;
+    }
+    .vintage .v-inner p {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .section-title,
+    .display-4 {
+        font-size: 36px;
+    }
+    .container-xl,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container {
+        max-width: 1140px;
+    }
+    header.navbar-dark .navbar-nav .nav-link {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .reviews-nav-max {
+        max-width: 900px;
+    }
+    .reviews .slick-arrow {
+        width: 65px;
+        height: 65px;
+    }
+    .reviews .slick-next::before {
+        width: 24px !important;
+        height: 38px !important;}
+        .reviews .slick-prev::before{top:2px}
+    .reviews .slick-prev {
+        left: -100px;
+    }
+    .reviews .slick-next {
+        right: -100px;
+    }
+    .map-block .get-in-touch .col-md-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .contact-address-block,
+    .contact-page-inner .col-md-7 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+        // 1366 X 700
+
+        .home-slider .inner-pic figure img{max-width: 500px;}
+        .home-slider .display-1 span {
+            font-size: 70px;
+        }
+        .home-slider .display-1 {
+            font-size: 50px;
+        }
+        .home-slider .lead span, .delivered h3 {
+            font-size: 30px;
+            line-height: 40px;
+        }
+        .home-slider .lead, .lead, .vintage .card .h3 {
+            font-size: 18px;
+            line-height: 30px;
+        }
+        .about p {
+            max-width: 95%;
+        }
+        .about-left figure {
+            height: 400px 
+        
+        }
+        .vintage-left-pic{height: 550px !important;}
+        .vintage-right-pic{height: 260px !important;}
+       .special-products {
+            padding: 40px 0 30px 0;
+        }
+        
+        .party-orders-right{margin-top: 40px;}
+        .party-orders-right figure{height: 470px;}
+        .get-in-touch .card p{font-size: 15px;}
+        .menu-list .product-title, .reviews-nav .inner h3, .get-in-touch .card h3, .contact-page .form .inner h2 {
+            font-size: 26px;
+            line-height: 34px;
+        }
+        .get-in-touch .card .inner > p{margin-bottom: 10px;}
+        .social-share1 .nav li a img {
+            height: 25px;
+        }
+        .social-share .nav li a {
+            width: 30px;
+        }
+        .social-share .nav li a.twitter {
+            width: 38px;
+        }
+        .social-share1 .nav li a {
+            width: auto;
+        }
+        .social-share .nav li a.watsapp {
+            width: 33px;
+        }
+        .our-blog-post figure{height: 240px;}
+        .latests-blocks figure{height: 200px;}
+            // 1366 X 700 end
+
+
+}
+@media all and (max-width: 1200px) {
+    .container-xl,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container {
+        max-width: 940px;
+    }
+    .navbar-brand img {
+        max-height: 100px;
+    }
+    header.navbar-dark .navbar-nav .nav-link {
+        font-size: 14px;
+    }
+    .btn {
+        font-size: 16px;
+        font-weight: 700;
+        padding: 8px 15px;
+    }
+    .customize-btn {
+        font-size: 18px;
+        padding: 10px 45px;
+    }
+    .home-slider .display-1 span {
+        font-size: 50px;
+    }
+    .home-slider .display-1 {
+        font-size: 40px;
+    }
+    .home-slider .lead span,
+    .delivered h3 {
+        font-size: 30px;
+        line-height: 42px;
+    }
+    .home-slider .lead,
+    .lead,
+    .vintage .card .h3 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+    .section-title,
+    .display-4 {
+        font-size: 36px;
+    }
+    .section-title span,
+    .party-orders h3 {
+        font-size: 28px;
+    }
+    .v-inner {
+        padding-left: 20px;
+    }
+    section {
+        padding: 90px 0;
+    }
+    .home-slider .lead,
+    .lead,
+    .vintage .card .h3 {
+        font-size: 17px;
+        line-height: 24px;
+    }
+    .vintage .card .h3 {
+        margin-bottom: 30px;
+    }
+    .vintage .card p.lead {
+        margin-bottom: 10px;
+    }
+    .special-products .product-block {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .delivered .delivered-pic {
+        max-width: 400px;
+        height: 72%;
+    }
+    .menu-list .block {
+        flex: 0 0 100%;
+        max-width: 100%;
+        border-left: 0;
+        border-bottom: solid 2px #ff6d75;
+        padding-bottom: 50px;
+        margin-bottom: 50px;
+    }
+    .party-orders .col-md-5 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        order: 2;
+    }
+    .party-orders .col-md-7 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        order: 1;
+        margin: 0;
+    }
+    .party-orders .card .inner {
+        padding: 0;
+    }
+    .reviews-nav-max {
+        max-width: 700px;
+    }
+    .map-block .get-in-touch .col-md-4 {
+        flex: 0 0 90%;
+        max-width: 90%;
+    }
+    .about .about-left-pic {
+        left: 0;
+        bottom: -71px;
+        margin-left: -59px;
+        width: 120px;
+    }
+    .about .about-right-pic {
+        right: 0;
+        top: -68px;
+        margin-right: -63px;
+        width: 120px;
+    }
+}
+@media all and (max-width: 991px) {
+
+    .catering .caterings-list{text-align: center;}
+    .catering .caterings-list .pic{margin-bottom: 0 !important;}
+    .caterings-list .card:nth-child(even) .content{order: 2;}
+    .caterings-list .card:nth-child(even) .pic{order: 1;}
+    .catering .caterings-list .h1{font-size: 26px;}
+    .catering-enquire-btn{
+        display: none;
+    }
+    .en-btn{
+        float: none;
+        
+    }
+
+    .latests-blocks .four-items-dots h6{
+        display: block;
+        -webkit-line-clamp: inherit;
+        -webkit-box-orient: inherit;
+        overflow: visible;
+        text-overflow: ellipsis;
+        min-height: 1px;
+    }
+
+
+
+
+
+    .contact-page .col-md-8 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .contact-page .get-in-touch ul li {
+        margin: 0;
+        border-bottom: solid 1px #f9f9f9;
+        width: 100%;
+    }
+    .contact-page .get-in-touch ul li::before {
+        display: none;
+    }
+    .vintage-left-pic {
+        height: auto !important;
+    }
+    .vintage-right-pic {
+        height: auto !important;
+    }
+    .social-share1 .nav li a {
+        margin-bottom: 20px;
+    }
+    .social-share1 .nav li a img {
+        height: auto;
+        max-width: 100%;
+    }
+    .product-page .menu-list ul li::before {
+        display: none;
+    }
+    .product-page .menu-list ul li p {
+        max-width: 85%;
+    }
+    .product-page .menu-list ul li {
+        position: relative;
+        border-bottom: solid 1px #eb646c;
+    }
+    .product-page .menu-list ul li i {
+        display: block;
+        line-height: 18px;
+    }
+    .product-page .menu-list ul li span {
+        position: absolute;
+        top: 2px;
+        right: 0;
+        font-weight: bold;
+    }
+    .product-page .menu-list ul li span::before {
+        content: "";
+        position: absolute;
+        top: 11px;
+        left: -6px;
+        width: 8px;
+        height: 1px;
+        background: #fff;
+    }
+    .our-blog-post figure {
+        height: auto;
+    }
+    .our-blog-post figure img {
+        height: auto;
+    }
+    .container-xl,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container {
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .home-slider .text-right,
+    .vintage,
+    .delivered,
+    .menu-list .product-title,
+    .party-orders .card .inner {
+        text-align: center !important;
+    }
+    .party-orders .card .inner ul {
+        text-align: left;
+    }
+    .about .about-left {
+        order: 1;
+        margin-bottom: 30px;
+    }
+    .about .col-md-7 {
+        order: 2;
+        text-align: center !important;
+    }
+    .vintage .col-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+    .vintage .flex-grow-1.mt-3 .col-6,
+    .special-products .product-block {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+    .vintage .col-8.d-flex.flex-column {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .special-products-inner .pic {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .special-products-inner .content {
+        flex: 0 0 65%;
+        max-width: 65%;
+        margin-left: -15%;
+    }
+    .delivered .delivered-pic {
+        display: none;
+    }
+    .reviews-nav-max {
+        max-width: 280px;
+        text-align: center;
+    }
+    .reviews-nav .inner h3 {
+        display: block;
+    }
+    .map-block .get-in-touch {
+        padding: 200px 0;
+    }
+    .map-block .get-in-touch .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .footer-nav li {
+        font-size: 14px;
+    }
+    .footer-nav li a {
+        padding: 0 10px;
+    }
+    .copy-rights .col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: center !important;
+    }
+    .home-slider .lead {
+        margin: 0;
+        max-width: 100%;
+    }
+    .home-slider .text-right {
+        max-width: 94%;
+        margin: 0 auto;
+        flex: 0 0 100%;
+    }
+    .about p {
+        max-width: 100%;
+    }
+    header nav .col-md-2.flex-fill.px-0.d-flex.justify-content-between,
+    header .navbar .navbar-collapse {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    header .navbar button {
+        margin-top: 40px;
+        margin-right: 30px;
+    }
+    header .navbar button {
+        width: 30px;
+        height: 30px;
+        border: none;
+        outline: none;
+    }
+    header .navbar button .icon {
+        width: 90%;
+        height: 100%;
+    }
+    header .navbar .navbar-collapse {
+        background: #c2333b;
+    }
+    header.navbar-dark .navbar-nav .nav-item .nav-link::before {
+        display: none;
+    }
+    header .navbar .navbar-collapse.justify-content-end.col-md-2.flex-fill.px-0 {
+        text-align: center;
+        padding: 5px 0 20px 0;
+    }
+    header.navbar-dark .navbar-nav .nav-link {
+        border-bottom: solid 1px #fff;
+        padding-bottom: 20px;
+        margin-bottom: 10px;
+    }
+    .product-page .list-group {
+        width: 100%;
+        text-wrap: nowrap;
+        display: block !important;
+    }
+    .product-page .list-group .list-group-item {
+        width: auto !important;
+        display: inline-block !important;
+        font-size: 12px;
+        border-radius: 5px !important;
+        padding: 5px 10px !important;
+        margin: 0 5px 10px 5px;
+    }
+    .product-page .avatar {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 10px !important;
+    }
+    .about-page-top {
+        text-align: center;
+    }
+    .hours-of-operation ul li span {
+        font-size: 12px;
+    }
+    .hours-of-operation ul li {
+        text-align: left;
+        font-size: 14px;
+        padding-left: 130px;
+    }
+    .about-page-top img {
+        margin-bottom: 30px;
+    }
+    footer .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+    .special-products-inner .content .special-products-content h4,
+    .menu-list ul li,
+    .party-orders p,
+    .party-orders ul li,
+    .get-in-touch .card ul li {
+        font-size: 15px;
+    }
+    .food-menu-active footer {
+        margin-bottom: 90px;
+    }
+    .product-page .food-list {
+        padding-bottom: 60px !important;
+    }
+    .product-page .food-list .product-title {
+        text-align: center;
+        padding: 30px 0 0px 0;
+    }
+    .product-page h1,
+    .product-page h2 {
+        text-align: center;
+    }
+    .menu-list .product-title {
+        font-size: 22px;
+        line-height: 24px;
+    }
+    .web-food-cat {
+        display: none;
+    }
+    .mobile-food-cat {
+        text-align: center;
+        background: var(--secondary-color);
+        padding: 0px 30px;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 999;
+        display: block;
+    }
+    .mobile-food-cat .item a {
+        font-size: 10px;
+        line-height: 12px !important;
+        color: #000;
+        display: block;
+        padding: 10px !important;
+        min-height: 80px;
+    }
+    .mobile-food-cat .item img {
+        margin: 0 auto 5px auto !important;
+    }
+    .cat-list.list-active {
+        background: var(--primary-color);
+        color: #fff !important;
+    }
+    .mobile-food-cat .slick-next:before,
+    .mobile-food-cat .slick-prev:before {
+        color: var(--primary-color);
+    }
+
+    .party-orders-right{margin-left:0;
+        flex: 0 0 100%;
+        max-width: 100%; order: 1; margin-bottom: 30px;}
+.party-orders .col-md-6{order: 2;}
+.party-orders  .party-orders-right{order: 1;}
+
+
+        .party-orders-right .carousel-cell{margin-right: 0 !important;}
+        .party-orders-right figure{height: auto;}
+        .menu-list .block::before{display: none;}
+        .footer-address p {
+            font-size: 15px;
+            margin-bottom: 0;
+            padding-bottom: 0;
+
+        }
+        .footer-address span{top:-1px}
+        .mobile-food-cat .as-for-cat.slick-slide{display: none !important;}
+
+        .footer-address{margin-bottom: 50px;}
+        .blog-details-top{max-width: 100%;}
+        .blog-details-top h1{font-size: 26px;}
+
+}
+

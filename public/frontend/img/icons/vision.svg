@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 294.54 294.54">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-5 {
+        filter: url(#drop-shadow-2);
+      }
+
+      .cls-6 {
+        filter: url(#drop-shadow-1);
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+    </style>
+    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="7" dy="7"/>
+      <feGaussianBlur result="blur" stdDeviation="5"/>
+      <feFlood flood-color="#acacad" flood-opacity=".25"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient" x1="-73.57" y1="-40.65" x2="105.66" y2="138.59" gradientTransform="translate(170.55 150.67) rotate(45)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f75e60"/>
+      <stop offset="1" stop-color="#c20202"/>
+    </linearGradient>
+    <filter id="drop-shadow-2" filterUnits="userSpaceOnUse">
+      <feOffset dx="7" dy="7"/>
+      <feGaussianBlur result="blur-2" stdDeviation="5"/>
+      <feFlood flood-color="#acacad" flood-opacity=".25"/>
+      <feComposite in2="blur-2" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-2" x1="142.62" y1="159.98" x2="142.62" y2="138.59" gradientUnits="userSpaceOnUse">
+      <stop offset=".46" stop-color="#f75e60"/>
+      <stop offset=".58" stop-color="#f76769"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="144.95" y1="178.3" x2="144.95" y2="124.93" xlink:href="#linear-gradient-2"/>
+  </defs>
+  <g class="cls-6">
+    <circle class="cls-1" cx="147.27" cy="147.27" r="147.27"/>
+  </g>
+  <g class="cls-5">
+    <circle class="cls-4" cx="147.5" cy="147.04" r="84.87"/>
+  </g>
+  <g>
+    <path class="cls-2" d="m142.63,138.59c-5.93,0-10.73,4.76-10.73,10.69s4.8,10.69,10.73,10.69,10.69-4.8,10.69-10.69-4.8-10.69-10.69-10.69Zm-1.8,11.89c-1.73,0-3.13-1.4-3.13-3.13s1.4-3.13,3.13-3.13,3.13,1.4,3.13,3.13-1.4,3.13-3.13,3.13Z"/>
+    <path class="cls-3" d="m144.93,124.93c-29.75,0-53.87,26.68-53.87,26.68,0,0,24.12,26.68,53.87,26.68s53.9-26.68,53.9-26.68c0,0-24.12-26.68-53.9-26.68Zm0,48c-11.76,0-21.32-9.56-21.32-21.32s9.56-21.32,21.32-21.32,21.32,9.53,21.32,21.32-9.53,21.32-21.32,21.32Z"/>
+  </g>
+</svg>
