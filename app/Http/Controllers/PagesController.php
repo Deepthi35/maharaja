@@ -149,7 +149,7 @@ class PagesController extends Controller
     {
         $request->validate(['location_id' => 'required|exists:locations,id']);
         session(['selected_location_id' => (string) $request->location_id]);
-        return response()->json(['success' => true]);
+        return redirect('/our-menu');
     }
 
     public function product(Request $request)
@@ -157,7 +157,7 @@ class PagesController extends Controller
         $page = Cms::where('slug', 'our-menu')->first();
         $testimonials = Testimonial::latest()->take(6)->get();
         $locations = Location::where('publish', 1)->get();
-        $selectedLocationId = $request->query('location');
+        $selectedLocationId = session('selected_location_id');
 
         $productsQuery = Product::where('publish', 1);
         if ($selectedLocationId) {

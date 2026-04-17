@@ -24,41 +24,52 @@
 
             <?php if(!$selectedLocationId): ?>
             
-            <div class="location-selection-section" id="locationSelection">
+            <div class="location-selection-section">
                 <h3 class="location-selection-title">Choose Your Location</h3>
                 <p class="location-selection-subtitle">Select a branch to view its menu</p>
                 <div class="location-boxes">
                     <?php $__currentLoopData = $locations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $location): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <button class="location-box" data-id="<?php echo e($location->id); ?>">
-                            <div class="location-box-image">
-                                <?php if($location->image): ?>
-                                    <img src="<?php echo e(asset(LOCATION_IMAGE_PATH . $location->image)); ?>" alt="<?php echo e($location->location_name); ?>">
-                                <?php else: ?>
-                                    <div class="location-box-placeholder">
-                                        <span class="material-symbols-outlined">restaurant</span>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                            <div class="location-box-info">
-                                <span class="material-symbols-outlined location-box-pin">location_on</span>
-                                <span class="location-box-name"><?php echo e($location->location_name); ?></span>
-                            </div>
-                        </button>
+                        <form action="<?php echo e(route('set.location')); ?>" method="POST" class="location-box-form">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" name="location_id" value="<?php echo e($location->id); ?>">
+                            <button type="submit" class="location-box">
+                                <div class="location-box-image">
+                                    <?php if($location->image): ?>
+                                        <img src="<?php echo e(asset(LOCATION_IMAGE_PATH . $location->image)); ?>" alt="<?php echo e($location->location_name); ?>">
+                                    <?php else: ?>
+                                        <div class="location-box-placeholder">
+                                            <span class="material-symbols-outlined">restaurant</span>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="location-box-info">
+                                    <span class="material-symbols-outlined location-box-pin">location_on</span>
+                                    <span class="location-box-name"><?php echo e($location->location_name); ?></span>
+                                </div>
+                            </button>
+                        </form>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
             <?php else: ?>
             
-            <div id="menuContent">
-                <div class="text-center mb-4">
-                    <div class="location-badge-wrap">
-                        <span class="location-badge">
-                            <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle;">location_on</span>
-                            <?php echo e($selectedLocation->location_name); ?>
+            <?php if($locations->count() > 1): ?>
+            <div class="location-tabs">
+                <?php $__currentLoopData = $locations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $location): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <form action="<?php echo e(route('set.location')); ?>" method="POST" class="location-tab-form">
+                        <?php echo csrf_field(); ?>
+                        <input type="hidden" name="location_id" value="<?php echo e($location->id); ?>">
+                        <button type="submit" class="location-tab <?php echo e($selectedLocationId == $location->id ? 'active' : ''); ?>">
+                            <span class="material-symbols-outlined location-tab-icon">location_on</span>
+                            <?php echo e($location->location_name); ?>
 
-                        </span>
-                    </div>
-                </div>
+                        </button>
+                    </form>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>
+            <?php endif; ?>
+
+            <div id="menuContent">
 
                 <div class="mobile-food-cat">
                     <div class="foot-cat">
@@ -158,7 +169,7 @@
     <?php echo $__env->make('pages.location', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <style>
-        /* ── Location Selection Section ── */
+        /* ── Location Selection ── */
         .location-selection-section {
             text-align: center;
             margin-bottom: 2.5rem;
@@ -184,7 +195,6 @@
             flex-wrap: wrap;
         }
         .location-box {
-            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -197,16 +207,15 @@
             transition: border-color 0.3s, transform 0.2s, box-shadow 0.3s;
             padding: 0;
             color: #F7E8BF;
+            text-decoration: none;
             text-align: center;
         }
         .location-box:hover {
             border-color: #C2333B;
             transform: translateY(-4px);
             box-shadow: 0 8px 24px rgba(194, 51, 59, 0.3);
-        }
-        .location-box.active {
-            border-color: #C2333B;
-            box-shadow: 0 0 0 3px rgba(194, 51, 59, 0.4);
+            color: #F7E8BF;
+            text-decoration: none;
         }
         .location-box-image {
             width: 100%;
@@ -248,46 +257,49 @@
             color: #C2333B;
             font-size: 1.3rem;
         }
-        .location-box.active .location-box-pin {
-            color: #F7E8BF;
-        }
         .location-box-name {
             font-size: 1.05rem;
             font-weight: 600;
         }
-        .location-box.active .location-box-info {
-            background: #C2333B;
-            color: #fff;
-        }
-        .location-box-check {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            font-size: 1.6rem;
-            color: #fff;
-            background: #C2333B;
-            border-radius: 50%;
-            padding: 2px;
-        }
 
-        /* ── Location badge ── */
-        .location-badge-wrap {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
+        /* ── Location Tabs ── */
+        .location-tabs {
+            display: flex;
             justify-content: center;
+            gap: 0;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #3a3a3a;
         }
-        .location-badge {
+        .location-tab-form {
+            margin: 0;
+        }
+        .location-tab {
             display: inline-flex;
             align-items: center;
-            gap: 0.3rem;
-            background: #C2333B;
-            color: #F7E8BF;
-            padding: 0.35rem 0.85rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            gap: 0.4rem;
+            padding: 0.75rem 1.5rem;
+            color: #aaa;
+            font-size: 1rem;
             font-weight: 600;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            transition: color 0.25s, border-color 0.25s;
+            margin-bottom: -2px;
+        }
+        .location-tab:hover {
+            color: #F7E8BF;
+        }
+        .location-tab.active {
+            color: #F7E8BF;
+            border-bottom-color: #C2333B;
+        }
+        .location-tab-icon {
+            font-size: 1.2rem;
+        }
+        .location-tab.active .location-tab-icon {
+            color: #C2333B;
         }
 
         /* ── Responsive ── */
@@ -300,19 +312,20 @@
                 width: 100%;
                 max-width: 340px;
             }
+            .location-tabs {
+                flex-wrap: wrap;
+            }
+            .location-tab {
+                flex: 1;
+                justify-content: center;
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
         }
     </style>
 
-<?php $__env->startSection('page_scripts'); ?>
-<script>
-    $(document).ready(function () {
-        $(document).on('click', '.location-box', function () {
-            var locationId = $(this).data('id');
-            window.location.href = '<?php echo e(url("/our-menu")); ?>?location=' + locationId;
-        });
-    });
-</script>
-<?php $__env->stopSection(); ?>
+
+
 
 <?php $__env->stopSection(); ?>
 

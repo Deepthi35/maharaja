@@ -1,3 +1,5 @@
+
+
 @php
     $hoursLocations = App\Models\Location::where('publish', 1)->orderBy('id')->get();
     $hoursSlugs     = ['hours-of-operation', 'location-2-hours-of-operation'];
