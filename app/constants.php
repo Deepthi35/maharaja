@@ -73,6 +73,10 @@ if (!defined('TEAM_IMAGE_PATH')) {
     define('TEAM_IMAGE_PATH', 'images/teams/');
 }
 
+if (!defined('LOCATION_IMAGE_PATH')) {
+    define('LOCATION_IMAGE_PATH', 'images/locations/');
+}
+
 // Variables
 if (!defined('INPUT_TYPES')) {
     define(

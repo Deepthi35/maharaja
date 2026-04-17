@@ -97,3 +97,6 @@ Route::resource('faq-categories', App\Http\Controllers\API\FaqCategoryAPIControl
 
 Route::resource('faqs', App\Http\Controllers\API\FaqAPIController::class)
     ->except(['create', 'edit']);
+
+Route::resource('locations', App\Http\Controllers\API\LocationAPIController::class)
+    ->except(['create', 'edit']);

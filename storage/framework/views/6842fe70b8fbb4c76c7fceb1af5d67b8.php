@@ -1,0 +1,1 @@
+<?php /**PATH C:\Users\DELL\OneDrive\Desktop\maharaja\vendor\rappasoft\laravel-livewire-tables\resources\views/stubs/custom.blade.php ENDPATH**/ ?>

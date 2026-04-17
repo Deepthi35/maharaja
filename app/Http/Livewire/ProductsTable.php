@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use App\Models\Location;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Repositories\ProductRepository;
@@ -110,6 +111,20 @@ class ProductsTable extends DataTableComponent
             //     ->searchable(),
             // Column::make("Seo Description", "seo_description")
             //     ->sortable()
+            Column::make("Location", "location_id")
+                ->format(function ($location_id, $row) {
+                    $ids = is_array($location_id) ? $location_id : json_decode($location_id ?? '[]', true);
+                    $locations = Location::where('publish', 1)->pluck('location_name', 'id');
+                    $product = Product::find($row->id);
+                    $prices = $product->location_prices ?? [];
+                    return view('common.livewire-tables.product-location', [
+                        'id'              => $row->id,
+                        'locationIds'     => array_map('strval', $ids),
+                        'locations'       => $locations,
+                        'locationPrices'  => $prices,
+                    ]);
+                })
+                ->html(),
             Column::make("Publish", "publish", "products")
                 ->format(function ($publish, $products) {
                     return view('common.livewire-tables.publish', ['publish' => $publish, 'id' => $products->id]);
@@ -135,6 +150,38 @@ class ProductsTable extends DataTableComponent
                     ])
                 )
         ];
+    }
+
+    public function toggleProductLocation($productId, $locationId)
+    {
+        $product = Product::find($productId);
+        $current = $product->location_id ?? [];
+        $locationId = (string) $locationId;
+
+        if (in_array($locationId, $current)) {
+            $current = array_values(array_filter($current, fn($l) => $l !== $locationId));
+        } else {
+            $current[] = $locationId;
+        }
+
+        $product->location_id = $current;
+        $product->save();
+    }
+
+    public function updateLocationPrice($productId, $locationId, $price)
+    {
+        $product = Product::find($productId);
+        $prices = $product->location_prices ?? [];
+        $locationId = (string) $locationId;
+
+        if ($price !== null && $price !== '') {
+            $prices[$locationId] = $price;
+        } else {
+            unset($prices[$locationId]);
+        }
+
+        $product->location_prices = !empty($prices) ? $prices : null;
+        $product->save();
     }
 
     public function togglePublish($id)
@@ -167,11 +214,18 @@ class ProductsTable extends DataTableComponent
     {
 
         $categories = ProductCategory::all()->pluck('name', 'id');
+        $locations  = Location::where('publish', 1)->pluck('location_name', 'id');
+
         return [
             SelectFilter::make('Product Category')
                 ->options(['' => 'Select Category', $categories])
                 ->filter(function (Builder $builder, $value) {
                     $builder->where('product_category_id', $value);
+                }),
+            SelectFilter::make('Location')
+                ->options(['' => 'All Locations'] + $locations->toArray())
+                ->filter(function (Builder $builder, $value) {
+                    $builder->whereJsonContains('location_id', (string) $value);
                 }),
         ];
     }

@@ -75,6 +75,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     /* CMS */
     Route::resource('cms', App\Http\Controllers\CmsController::class);
 
+    Route::resource('locations', App\Http\Controllers\LocationController::class);
+
+
     /* Services */
     Route::resource('serviceCategories', App\Http\Controllers\ServiceCategoryController::class);
     Route::resource('services', App\Http\Controllers\ServiceController::class);
@@ -120,6 +123,7 @@ Route::controller(PagesController::class)->group(function () {
     Route::get('/contact', 'contact');
     Route::get('/careers', 'career');
     Route::get('/our-menu', 'product');
+    Route::post('/set-location', 'setLocation')->name('set.location');
     Route::get('/products/{category}', 'categoryProduct');
     Route::get('/products-detail/{name}', 'productDetails');
     Route::get('/search-results', 'searchResults');

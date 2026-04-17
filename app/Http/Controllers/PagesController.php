@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BlogCategory;
+use App\Models\Location;
 use App\Models\BlogPost;
 use App\Models\ClienteleCategory;
 use App\Models\Cms;
@@ -144,16 +145,33 @@ class PagesController extends Controller
             abort(404);
         }
     }
+    public function setLocation(Request $request)
+    {
+        $request->validate(['location_id' => 'required|exists:locations,id']);
+        session(['selected_location_id' => (string) $request->location_id]);
+        return response()->json(['success' => true]);
+    }
+
     public function product(Request $request)
     {
-        $perPage = $request->per_page ?? 12;
         $page = Cms::where('slug', 'our-menu')->first();
-        $productsQuery = Product::where('publish', 1);
         $testimonials = Testimonial::latest()->take(6)->get();
-        $products = Product::where('publish', 1)->orderBy('sort', 'asc')->get();
+        $locations = Location::where('publish', 1)->get();
+        $selectedLocationId = $request->query('location');
+
+        $productsQuery = Product::where('publish', 1);
+        if ($selectedLocationId) {
+            $productsQuery->whereJsonContains('location_id', (string) $selectedLocationId);
+        }
+        $products = $productsQuery->orderBy('sort', 'asc')->get();
         $productCategories = ProductCategory::where('featured', 1)->orderBy('sort', 'asc')->get();
         $faqCategory = !empty($page) ? getFaqCategory('pages', $page->id) : null;
-        return view('pages.product', compact('products', 'productCategories', 'faqCategory', 'testimonials', 'page'));
+        $selectedLocation = $locations->firstWhere('id', $selectedLocationId);
+
+        return view('pages.product', compact(
+            'products', 'productCategories', 'faqCategory',
+            'testimonials', 'page', 'locations', 'selectedLocationId', 'selectedLocation'
+        ));
     }
     public function categoryProduct(Request $request, $categoryname)
     {

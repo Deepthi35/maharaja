@@ -262,9 +262,27 @@
                             </li>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
-                    <div class="footer-address text-dark"> <span class="material-symbols-outlined">
-                            add_location_alt
-                        </span> <?php echo applicationSettings('map-location'); ?></div>
+                    <?php $footerLocations = App\Models\Location::where('publish', 1)->orderBy('id')->get(); ?>
+                    <div class="footer-addresses">
+                        <div class="footer-address text-dark">
+                            <?php if(!empty($footerLocations[0])): ?>
+                                <strong class="footer-location-name"><?php echo e($footerLocations[0]->location_name); ?></strong>
+                            <?php endif; ?>
+                            <span class="material-symbols-outlined">add_location_alt</span>
+                            <?php echo applicationSettings('map-location'); ?>
+
+                        </div>
+                        <?php if(applicationSettings('location-2-map-location')): ?>
+                        <div class="footer-address text-dark">
+                            <?php if(!empty($footerLocations[1])): ?>
+                                <strong class="footer-location-name"><?php echo e($footerLocations[1]->location_name); ?></strong>
+                            <?php endif; ?>
+                            <span class="material-symbols-outlined">add_location_alt</span>
+                            <?php echo applicationSettings('location-2-map-location'); ?>
+
+                        </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>

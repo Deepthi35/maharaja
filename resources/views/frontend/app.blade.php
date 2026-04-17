@@ -258,9 +258,25 @@
                             </li>
                         @endforeach
                     </ul>
-                    <div class="footer-address text-dark"> <span class="material-symbols-outlined">
-                            add_location_alt
-                        </span> {!! applicationSettings('map-location') !!}</div>
+                    @php $footerLocations = App\Models\Location::where('publish', 1)->orderBy('id')->get(); @endphp
+                    <div class="footer-addresses">
+                        <div class="footer-address text-dark">
+                            @if(!empty($footerLocations[0]))
+                                <strong class="footer-location-name">{{ $footerLocations[0]->location_name }}</strong>
+                            @endif
+                            <span class="material-symbols-outlined">add_location_alt</span>
+                            {!! applicationSettings('map-location') !!}
+                        </div>
+                        @if(applicationSettings('location-2-map-location'))
+                        <div class="footer-address text-dark">
+                            @if(!empty($footerLocations[1]))
+                                <strong class="footer-location-name">{{ $footerLocations[1]->location_name }}</strong>
+                            @endif
+                            <span class="material-symbols-outlined">add_location_alt</span>
+                            {!! applicationSettings('location-2-map-location') !!}
+                        </div>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

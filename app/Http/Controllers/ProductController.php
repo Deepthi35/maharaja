@@ -7,6 +7,7 @@ use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Livewire\ProductCategoriesTable;
+use App\Models\Location;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Specification;
@@ -42,7 +43,8 @@ class ProductController extends AppBaseController
     public function create()
     {
         $categories = ProductCategory::all()->pluck('name', 'id');
-        return view('products.create', compact('categories'));
+        $locations = Location::where('publish',1)->pluck('location_name','id');
+        return view('products.create', compact('categories','locations'));
     }
 
     public function createSpecifications($request, $productId)
@@ -64,6 +66,11 @@ class ProductController extends AppBaseController
     public function store(CreateProductRequest $request)
     {
         $input = $request->all();
+
+        $input['location_id'] = array_values(array_filter($request->location_id ?? [], fn($v) => $v !== null && $v !== ''));
+
+        $locationPrices = array_filter($request->location_prices ?? [], fn($v) => $v !== null && $v !== '');
+        $input['location_prices'] = !empty($locationPrices) ? $locationPrices : null;
 
         $product = $this->productRepository->create($input);
 
@@ -106,6 +113,8 @@ class ProductController extends AppBaseController
     public function edit($id)
     {
         $categories = ProductCategory::all()->pluck('name', 'id');
+        $locations = Location::where('publish',1)->pluck('location_name','id');
+
         $product = $this->productRepository->find($id);
 
         if (empty($product)) {
@@ -114,7 +123,7 @@ class ProductController extends AppBaseController
             return redirect(route('products.index'));
         }
         $specifications = Specification::where('product_id', $product->id)->get();
-        return view('products.edit', compact('categories', 'product', 'specifications'));
+        return view('products.edit', compact('categories', 'product', 'specifications','locations'));
     }
 
     /**
@@ -135,6 +144,11 @@ class ProductController extends AppBaseController
         }
 
         $fieldsToUpdate = $request->except('image_gallery');
+
+        $fieldsToUpdate['location_id'] = array_values(array_filter($request->location_id ?? [], fn($v) => $v !== null && $v !== ''));
+
+        $locationPrices = array_filter($request->location_prices ?? [], fn($v) => $v !== null && $v !== '');
+        $fieldsToUpdate['location_prices'] = !empty($locationPrices) ? $locationPrices : null;
 
         $product = $this->productRepository->update($fieldsToUpdate, $id);
 

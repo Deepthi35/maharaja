@@ -8,6 +8,17 @@
     ]) !!}
 </div>
 
+<div class="form-group col-sm-6">
+    {!! Form::label('location_id', 'Select Location') !!}
+    {!! Form::select('location_id[]', $locations, isset($product) ? $product->location_id : null, [
+        'class' => 'form-control select2',
+        'data-placeholder' => 'Select Location',
+        'multiple' => 'multiple',
+        'id' => 'location_id',
+    ]) !!}
+</div>
+
+
 <!-- Title Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('title', 'Title:') !!}
@@ -42,6 +53,14 @@
         'maxlength' => 255,
         'maxlength' => 255,
     ]) !!}
+</div>
+
+<!-- Location-wise Prices -->
+<div class="form-group col-sm-12" id="location-prices-section" style="display: none;">
+    <label><strong>Location-wise Prices</strong></label>
+    <p class="text-muted small">Set a different price for each selected location. Leave blank to use the default price above.</p>
+    <div id="location-prices-container" class="row">
+    </div>
 </div>
 
 <!-- Post Date Field -->
@@ -263,5 +282,50 @@
         if ($(".form_field_outer").find(".form_field_outer_row").length == 0) {
             addRow(1);
         }
+
+        // Location-wise pricing
+        var allLocations = @json($locations);
+        var existingPrices = @json(isset($product) ? ($product->location_prices ?? []) : []);
+
+        function updateLocationPrices() {
+            var selectedIds = $('#location_id').val() || [];
+            var container = $('#location-prices-container');
+            var section = $('#location-prices-section');
+
+            // Preserve any prices the user already typed in
+            container.find('input').each(function() {
+                var match = this.name.match(/location_prices\[(\d+)\]/);
+                if (match && $(this).val() !== '') {
+                    existingPrices[match[1]] = $(this).val();
+                }
+            });
+
+            if (selectedIds.length === 0) {
+                section.hide();
+                container.html('');
+                return;
+            }
+
+            section.show();
+            container.html('');
+
+            selectedIds.forEach(function(id) {
+                var name = allLocations[id] || 'Location ' + id;
+                var price = existingPrices[id] || '';
+                container.append(
+                    '<div class="col-sm-4 mb-3">' +
+                        '<label class="font-weight-bold">' + name + '</label>' +
+                        '<input type="text" name="location_prices[' + id + ']" value="' + price + '" class="form-control" placeholder="e.g. 12.99">' +
+                    '</div>'
+                );
+            });
+        }
+
+        $(document).ready(function() {
+            // Listen to both native change and select2 events
+            $('#location_id').on('change select2:select select2:unselect', updateLocationPrices);
+            // Run once on page load (setTimeout ensures select2 has initialized)
+            setTimeout(updateLocationPrices, 300);
+        });
     </script>
 @endpush

@@ -179,6 +179,8 @@ use Illuminate\Database\Eloquent\Model;
 
     public $fillable = [
         'product_category_id',
+        'location_id',
+        'location_prices',
         'title',
         'slug',
         'sub_title',
@@ -204,6 +206,8 @@ use Illuminate\Database\Eloquent\Model;
     ];
 
     protected $casts = [
+        'location_id' => 'array',
+        'location_prices' => 'array',
         'title' => 'string',
         'slug' => 'string',
         'sub_title' => 'string',

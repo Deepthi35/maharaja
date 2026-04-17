@@ -370,9 +370,10 @@ font-size: 24px; line-height: 30px; font-weight: 700;
       .contact-page   .card.card-lg.card-body .item{margin-top: 30px;}
 
       .about-page-top{}
+      .hours-of-operation h3{font-size: 36px; line-height: 42px;}
       .hours-of-operation ul{list-style: none; margin: 0; padding: 30px 0 0 0;}
-      .hours-of-operation ul li{border-bottom: dotted 1px #fff; font-size: 18px; padding-bottom: 15px; margin-bottom: 15px; position: relative; padding-left: 190px;}
-      .hours-of-operation ul li span{font-weight: 700; position: absolute; top: 0; left: 0;}
+      .hours-of-operation ul li{border-bottom: dotted 1px rgba(255,255,255,0.4); font-size: 20px; font-weight: 500; padding-bottom: 12px; margin-bottom: 12px; position: relative; display: flex; align-items: baseline; gap: 10px; color: #ffffff;}
+      .hours-of-operation ul li span{font-weight: 700; font-size: 20px; white-space: nowrap; min-width: 180px; position: static;}
       .hours-of-operation ul li:last-child{border: none;}
       .back-to-top{display: none !important;}
 
@@ -380,7 +381,7 @@ font-size: 24px; line-height: 30px; font-weight: 700;
       .reviews-nav .inner figure img{border-radius: 100%;}
 
       .product-page .list-group{max-height: 90vh;
-        overflow: scroll;}
+        overflow-y: auto;}
 body{background: #000000;}
 .about-page p,
 .about-page .section-title span{color: #ffffff;}
@@ -477,9 +478,12 @@ body{background: #000000;}
     .thanks-section span{display: block; font-size: 40px; font-weight: 700;}
     .thanks-section h1{font-size: 32px; line-height: 50px; font-weight: 400; color: #ffffff;}
     .thanks-section p, .thanks-section p.lead{color: #ffffff;}
- .footer-address{margin-top: 20px;}
- .footer-address p{    font-size: 20px; }
- .footer-address span{position: relative; margin-right: 10px; top: 2px;}
+ .footer-addresses{display: flex; flex-wrap: wrap; justify-content: center; gap: 20px 50px; margin-top: 25px;}
+ .footer-location-name{display: block; font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; opacity: 1; color: var(--primary-color); font-family: 'Laila', serif;}
+ .footer-address{margin-top: 0; position: relative; padding-left: 0;}
+ .footer-address + .footer-address::before{content: ""; width: 2px; height: 70%; background: var(--primary-color); opacity: 0.4; position: absolute; left: -25px; top: 15%;}
+ .footer-address p{font-size: 18px; }
+ .footer-address span{position: relative; margin-right: 10px; top: 2px; color: var(--primary-color);}
  .footer-address span,  .footer-address p{display: inline-block; vertical-align: top;}
  
 .party-orders  ul{margin-left: 35px; padding: 0;}

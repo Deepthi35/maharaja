@@ -220,6 +220,15 @@ class RolesAndPermissionsSeeder extends Seeder
             Permission::create(['name' => 'view-faqs']);
             Permission::create(['name' => 'publish-faqs']);
         }
+        if (Permission::where('name', 'locations')->first() == null) {
+            Permission::create(['name' => 'locations', 'type' => 1]);
+            Permission::create(['name' => 'add-locations']);
+            Permission::create(['name' => 'edit-locations']);
+            Permission::create(['name' => 'delete-locations']);
+            Permission::create(['name' => 'view-locations']);
+            Permission::create(['name' => 'publish-locations']);
+        }
+
 
         // create roles and assign created permissions
         if (Role::where('name', 'Developer Admin')->first() == null) {
