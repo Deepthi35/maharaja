@@ -9,7 +9,10 @@
 
 @if($hoursLocations->isNotEmpty())
 <div class="container">
+
     <div class="card card-body border-0 o-hidden bg-primary text-light delivered hours-of-operation">
+    <h3 class="text-left text-white mb-3">Hours of Operations</h3>
+
 
         @if($hasTwo)
             {{-- Two locations side by side --}}
@@ -73,6 +76,48 @@
         margin-bottom: 18px;
     }
     .hours-location-name .material-symbols-outlined { font-size: 24px; }
+    .hours-of-operation .hours-location-block h1,
+    .hours-of-operation .hours-location-block h2,
+    .hours-of-operation .hours-location-block h3,
+    .hours-of-operation .hours-location-block h4,
+    .hours-of-operation .hours-location-block h5,
+    .hours-of-operation .hours-location-block h6 {
+        font-size: 18px;
+        line-height: 1.3;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .hours-of-operation .hours-location-block p,
+    .hours-of-operation .hours-location-block ul li,
+    .hours-of-operation .hours-location-block ul li span,
+    .hours-of-operation .hours-location-block ul li strong {
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: 400;
+    }
+    .hours-of-operation .hours-location-block ul li span {
+        font-weight: 600;
+        min-width: auto;
+    }
+    .hours-of-operation .col-md-7 h1,
+    .hours-of-operation .col-md-7 h2,
+    .hours-of-operation .col-md-7 h3,
+    .hours-of-operation .col-md-7 h4 {
+        font-size: 18px;
+        line-height: 1.3;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .hours-of-operation .col-md-7 ul li,
+    .hours-of-operation .col-md-7 ul li span,
+    .hours-of-operation .col-md-7 p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    .hours-of-operation .col-md-7 ul li span {
+        font-weight: 600;
+        min-width: auto;
+    }
     .hours-divider {
         width: 1px;
         align-self: stretch;

@@ -20,9 +20,6 @@
                         {{ $locationsList[0]->location_name }}
                     </div>
                 @endif
-                <div class="location-description">
-                    {!! applicationSettings('footer-contact-short-description') !!}
-                </div>
                 <ul class="location-details">
                     <li>
                         <span class="detail-icon"><span class="material-symbols-outlined">call</span></span>
@@ -68,9 +65,6 @@
                         {{ $locationsList[1]->location_name }}
                     </div>
                 @endif
-                <div class="location-description">
-                    {!! applicationSettings('location-2-short-description') !!}
-                </div>
                 <ul class="location-details">
                     @if(applicationSettings('location-2-phone'))
                     <li>

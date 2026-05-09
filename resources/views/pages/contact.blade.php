@@ -56,17 +56,19 @@
                                     </div>
                                 @endif
                                 <ul>
-                                    <li>
+                                    <li class="contact-loc-address">
                                         <img src="{{ asset('frontend/img/icons/interface/map-marker1.svg') }}" alt="Address icon" class="address-icon">
                                         {!! applicationSettings('contact-address') !!}
                                     </li>
-                                    <li>
-                                        <img src="{{ asset('frontend/img/icons/interface/mail1.svg') }}" alt="Email icon" class="email-icon">
-                                        <a href="mailto:{{ applicationSettings('primary-mail') }}">{{ applicationSettings('primary-mail') }}</a>
-                                    </li>
-                                    <li>
-                                        <img src="{{ asset('frontend/img/icons/interface/phone1.svg') }}" alt="Phone icon" class="phone-icon">
-                                        <a href="tel:{{ applicationSettings('primary-phone-number') }}">{{ applicationSettings('primary-phone-number') }}</a>
+                                    <li class="contact-loc-inline">
+                                        <span class="contact-loc-inline-item">
+                                            <img src="{{ asset('frontend/img/icons/interface/mail1.svg') }}" alt="Email icon" class="email-icon">
+                                            <a href="mailto:{{ applicationSettings('primary-mail') }}">{{ applicationSettings('primary-mail') }}</a>
+                                        </span>
+                                        <span class="contact-loc-inline-item">
+                                            <img src="{{ asset('frontend/img/icons/interface/phone1.svg') }}" alt="Phone icon" class="phone-icon">
+                                            <a href="tel:{{ applicationSettings('primary-phone-number') }}">{{ applicationSettings('primary-phone-number') }}</a>
+                                        </span>
                                     </li>
                                 </ul>
                             </div>
@@ -81,21 +83,25 @@
                                 </div>
                                 <ul>
                                     @if(applicationSettings('location-2-map-location'))
-                                    <li>
+                                    <li class="contact-loc-address">
                                         <img src="{{ asset('frontend/img/icons/interface/map-marker1.svg') }}" alt="Address icon" class="address-icon">
                                         {!! applicationSettings('location-2-map-location') !!}
                                     </li>
                                     @endif
-                                    @if(applicationSettings('location-2-mail'))
-                                    <li>
-                                        <img src="{{ asset('frontend/img/icons/interface/mail1.svg') }}" alt="Email icon" class="email-icon">
-                                        <a href="mailto:{{ applicationSettings('location-2-mail') }}">{{ applicationSettings('location-2-mail') }}</a>
-                                    </li>
-                                    @endif
-                                    @if(applicationSettings('location-2-phone'))
-                                    <li>
-                                        <img src="{{ asset('frontend/img/icons/interface/phone1.svg') }}" alt="Phone icon" class="phone-icon">
-                                        <a href="tel:{{ applicationSettings('location-2-phone') }}">{{ applicationSettings('location-2-phone') }}</a>
+                                    @if(applicationSettings('location-2-mail') || applicationSettings('location-2-phone'))
+                                    <li class="contact-loc-inline">
+                                        @if(applicationSettings('location-2-mail'))
+                                        <span class="contact-loc-inline-item">
+                                            <img src="{{ asset('frontend/img/icons/interface/mail1.svg') }}" alt="Email icon" class="email-icon">
+                                            <a href="mailto:{{ applicationSettings('location-2-mail') }}">{{ applicationSettings('location-2-mail') }}</a>
+                                        </span>
+                                        @endif
+                                        @if(applicationSettings('location-2-phone'))
+                                        <span class="contact-loc-inline-item">
+                                            <img src="{{ asset('frontend/img/icons/interface/phone1.svg') }}" alt="Phone icon" class="phone-icon">
+                                            <a href="tel:{{ applicationSettings('location-2-phone') }}">{{ applicationSettings('location-2-phone') }}</a>
+                                        </span>
+                                        @endif
                                     </li>
                                     @endif
                                 </ul>
@@ -144,16 +150,19 @@
 <style>
     .contact-locations-row {
         display: flex;
-        align-items: flex-start;
+        align-items: stretch;
         justify-content: center;
         gap: 0;
-        padding: 30px 0 30px;
+        padding: 35px 0 30px;
     }
     .contact-loc-block {
-        flex: 1;
+        flex: 1 1 0;
+        min-width: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
+        padding: 0 20px;
     }
     .contact-loc-name {
         display: inline-flex;
@@ -168,7 +177,7 @@
         letter-spacing: 0.08em;
         padding: 8px 22px;
         border-radius: 25px;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
     }
     .contact-loc-name .material-symbols-outlined {
         font-size: 24px;
@@ -178,13 +187,14 @@
         margin: 0;
         padding: 0;
         width: 100%;
-        max-width: 350px;
+        max-width: 520px;
     }
     .contact-loc-block ul li {
         display: flex !important;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: center;
         gap: 12px;
-        margin: 0 0 20px 0 !important;
+        margin: 0 0 18px 0 !important;
         padding: 0 !important;
         font-size: 16px;
         line-height: 1.5;
@@ -194,12 +204,12 @@
         display: none !important;
     }
     .contact-loc-block ul li img {
-        width: 24px;
-        height: 24px;
-        margin: 2px 0 0 0 !important;
+        width: 22px;
+        height: 22px;
+        margin: 0 !important;
         flex-shrink: 0;
         display: block !important;
-        vertical-align: top;
+        vertical-align: middle;
     }
     .contact-loc-block ul li a,
     .contact-loc-block ul li p {
@@ -208,24 +218,142 @@
         font-weight: 400;
         margin: 0;
         display: inline;
+        text-decoration: none;
+    }
+    .contact-loc-block ul li a:hover {
+        color: #FFD54F;
+        text-decoration: none;
+    }
+    .contact-loc-block ul li.contact-loc-address {
+        align-items: flex-start;
+        text-align: left;
     }
     .contact-loc-divider {
-        width: 2px;
+        width: 1px;
         align-self: stretch;
         background: rgba(255,255,255,0.25);
-        margin: 0 25px;
+        margin: 0;
         flex-shrink: 0;
+    }
+    .contact-loc-block ul li.contact-loc-inline {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        width: 100%;
+        margin-bottom: 0 !important;
+    }
+    .contact-loc-inline-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        white-space: nowrap;
+        min-width: 0;
+        position: relative;
+    }
+    .contact-loc-inline-item + .contact-loc-inline-item::before {
+        content: "";
+        position: absolute;
+        left: -14px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 20px;
+        background: rgba(255,255,255,0.45);
+    }
+    .contact-loc-inline-item img {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+        display: block;
+    }
+    .contact-loc-inline-item a {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 400;
+        text-decoration: none;
+    }
+    .contact-loc-inline-item a:hover {
+        color: #FFD54F;
+        text-decoration: none;
+    }
+    @media(max-width: 991px) {
+        .contact-loc-block ul li.contact-loc-inline {
+            gap: 18px;
+        }
     }
     @media(max-width: 768px) {
         .contact-locations-row {
             flex-direction: column;
             align-items: center;
+            gap: 30px;
+        }
+        .contact-loc-block {
+            padding: 0;
         }
         .contact-loc-divider {
             width: 80%;
             height: 1px;
-            margin: 20px 0;
+            margin: 0;
+        }
+        .contact-loc-block ul li.contact-loc-inline {
+            flex-direction: column;
+            gap: 14px;
+        }
+        .contact-loc-inline-item + .contact-loc-inline-item::before {
+            display: none;
         }
     }
+    @media all and (max-width: 991px) {
+        .contact-loc-block ul {
+            max-width: 100%;
+        }
+        .contact-loc-block ul li {
+            display: flex !important;
+            align-items: flex-start;
+            justify-content: left;
+            gap: 8px;
+            margin: 0 0 20px 0 !important;
+            padding: 0 !important;
+            font-size: 16px;
+            line-height: 1.5;
+            position: static !important;
+	}
+    
+    .contact-loc-block ul li.contact-loc-inline {
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 18px;
+        width: 100%;
+    }
+
+    .contact-loc-inline-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: left;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .contact-loc-block ul li.contact-loc-inline {
+        flex-direction: column;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        gap: 14px;
+        width: 100%;
+    }
+
+    .contact-loc-inline-item {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: left;
+    }
+}
+    
 </style>
 @endsection

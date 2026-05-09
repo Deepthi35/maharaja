@@ -22,8 +22,7 @@
             @if(!$selectedLocationId)
             {{-- Location Selection - shown when no location selected --}}
             <div class="location-selection-section">
-                <h3 class="location-selection-title">Choose Your Location</h3>
-                <p class="location-selection-subtitle">Select a branch to view its menu</p>
+                <h3 class="text-white">Select a branch to view its menu</h3>
                 <div class="location-boxes">
                     @foreach($locations as $location)
                         <form action="{{ route('set.location') }}" method="POST" class="location-box-form">
@@ -35,7 +34,7 @@
                                         <img src="{{ asset(LOCATION_IMAGE_PATH . $location->image) }}" alt="{{ $location->location_name }}">
                                     @else
                                         <div class="location-box-placeholder">
-                                            <span class="material-symbols-outlined">restaurant</span>
+                                            <span class="location-box-placeholder-name">{{ $location->location_name }}</span>
                                         </div>
                                     @endif
                                 </div>
@@ -233,10 +232,15 @@
             justify-content: center;
             background: linear-gradient(135deg, #1a1a1a, #2a0a0a);
         }
-        .location-box-placeholder .material-symbols-outlined {
-            font-size: 3rem;
-            color: #C2333B;
-            opacity: 0.6;
+        .location-box-placeholder-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #F7E8BF;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+            padding: 1rem;
+            line-height: 1.3;
         }
         .location-box-info {
             display: flex;

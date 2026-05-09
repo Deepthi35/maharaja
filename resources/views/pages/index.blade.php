@@ -142,13 +142,15 @@
                             <div class="h-100 vintage-right-pic">
                                 <div class="card card-body h-100 bg-primary border-radius-0 text-center">
                                     <div class="flex-grow-1">
-                                        <div class="h3">{!! applicationSettings('open-everyday-title') !!}</div>
-                                        {!! applicationSettings('open-everyday-description') !!}
+                                        
+                                        <div class="h3">Book Your Table Today!</div>
+                                        
+                                        <div>Experience the flavors of our exquisite cuisine, crafted with authentic spices and traditional recipes</div>
                                     </div>
-                                    @if (applicationSettings('open-everyday-button') != '')
-                                        <a href="tel:{!! applicationSettings('open-everyday-url') !!}"
-                                            class="btn btn-outline-white">{!! applicationSettings('open-everyday-button') !!}</a>
-                                    @endif
+                                    <div class="contact-loc-name">
+                                        <a href="tel:+1 402-505-4488" class="my-1 btn btn-outline-white"><img src="{{ asset('frontend/img/icons/interface/phone1.svg') }}" alt="Phone icon" class="phone-icon pr-1">OMAHA</a>
+                                        <a href="tel:+1 531-207-1921" class="btn btn-outline-white"><img src="{{ asset('frontend/img/icons/interface/phone1.svg') }}" alt="Phone icon" class="phone-icon pr-1">PAPILLION </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -178,9 +180,6 @@
                     alt="{{ applicationSettingsAltText('get-your-favourite-image') }}" />
                     
                     
-{{--                     
-                    
-                    <img src="/images/media/indian-pic_38gcmf7mz.png" /> --}}
 
                 </figure>
             </div>
