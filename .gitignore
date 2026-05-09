@@ -17,4 +17,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/storage/framework/sessions/*
+/storage/framework/cache/*
+/storage/framework/views/*
 .embold 
