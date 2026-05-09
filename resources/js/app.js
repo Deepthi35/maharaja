@@ -9,7 +9,7 @@ import 'admin-lte';
 import 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js'
 
 // Parsley JS
-import 'https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js';
+import '../../public/js/parsley.min.js';
 
 
 // Colorpicker
