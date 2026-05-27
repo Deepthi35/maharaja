@@ -46,19 +46,22 @@ use Illuminate\Database\Eloquent\Model;
     public $fillable = [
         'location_name',
         'image',
-        'publish'
+        'publish',
+        'order_url'
     ];
 
     protected $casts = [
         'location_name' => 'string',
         'image' => 'string',
-        'publish' => 'boolean'
+        'publish' => 'boolean',
+        'order_url' => 'string'
     ];
 
     public static array $rules = [
         'location_name' => 'required|string|max:255',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         'publish' => 'nullable|boolean',
+        'order_url' => 'nullable|string|max:255',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];

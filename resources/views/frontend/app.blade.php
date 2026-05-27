@@ -133,11 +133,11 @@
                     
              
 
-                        <a target="_blank" href="{!! applicationSettings('order-now-url') !!}" class="btn btn-primary ml-lg-3">{!! applicationSettings('order-now-text') !!}</a>
+                        <a href="#" onclick="openLocationModal()" class="btn btn-primary ml-lg-3">{!! applicationSettings('order-now-text') !!}</a>
 
                         @else
 
-                        <a href="{{ url('order-online') }}" class="btn btn-primary ml-lg-3">Order Now</a>
+                        <a href="#" onclick="openLocationModal()" class="btn btn-primary ml-lg-3">Order Now</a>
 
                         @endif
 
@@ -466,4 +466,178 @@
         });
     </script>
     @yield('page_scripts')
+    
+    {{-- Location Selection Modal for Order Now --}}
+    <div class="modal fade" id="location-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                    <div class="p-3">
+                        <div class="text-center">
+                            <h3 class="m-1 text-primary">Select a Location</h3>
+                            <p class="text-muted mb-4">Choose your nearest branch to order online</p>
+                        </div>
+                        <div class="location-boxes">
+                            @php
+                                $locations = App\Models\Location::where('publish', 1)->get();
+                            @endphp
+                            @foreach($locations as $location)
+                                @if($location->order_url)
+                                    <a href="{{ $location->order_url }}" target="_blank" class="location-box">
+                                        <div class="location-box-image">
+                                            @if($location->image)
+                                                <img src="{{ asset(LOCATION_IMAGE_PATH . $location->image) }}" alt="{{ $location->location_name }}">
+                                            @else
+                                                <div class="location-box-placeholder">
+                                                    <span class="location-box-placeholder-name">{{ $location->location_name }}</span>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div class="location-box-info">
+                                            <span class="material-symbols-outlined location-box-pin">location_on</span>
+                                            <span class="location-box-name">{{ $location->location_name }}</span>
+                                        </div>
+                                    </a>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* ── Location Selection ── */
+        .location-selection-section {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding: 2rem 0;
+        }
+        .location-selection-title {
+            color: #F7E8BF;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+        .location-selection-subtitle {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        .location-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .location-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 280px;
+            background: #1a1a1a;
+            border: 2px solid #3a3a3a;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            padding: 0;
+            color: #F7E8BF;
+            text-decoration: none;
+            text-align: center;
+        }
+        .location-box:hover {
+            border-color: #C2333B;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(194, 51, 59, 0.3);
+            color: #F7E8BF;
+            text-decoration: none;
+        }
+        .location-box-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            background: #111;
+        }
+        .location-box-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .location-box:hover .location-box-image img {
+            transform: scale(1.05);
+        }
+        .location-box-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a, #2a0a0a);
+        }
+        .location-box-placeholder-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #F7E8BF;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+            padding: 1rem;
+            line-height: 1.3;
+        }
+        .location-box-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.25rem;
+            width: 100%;
+            justify-content: center;
+        }
+        .location-box-pin {
+            color: #C2333B;
+            font-size: 1.3rem;
+        }
+        .location-box-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #F7E8BF;
+        }
+        #location-modal .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            color: #F7E8BF;
+        }
+        #location-modal .modal-content {
+            background: #1a1a1a;
+            border: 1px solid #3a3a3a;
+        }
+        #location-modal .modal-body {
+            background: #1a1a1a;
+        }
+        #location-modal h3 {
+            color: #F7E8BF;
+        }
+        #location-modal p {
+            color: #aaa;
+        }
+    </style>
+
+    <script>
+        function openLocationModal() {
+            $('#location-modal').modal('show');
+        }
+    </script>
 </html>

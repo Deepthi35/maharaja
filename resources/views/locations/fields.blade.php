@@ -15,6 +15,13 @@
     @endif
 </div>
 
+<!-- Order URL Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('order_url', 'Order URL:') !!}
+    {!! Form::text('order_url', isset($location) ? $location->order_url : null, ['class' => 'form-control', 'placeholder' => 'https://example.com/order']) !!}
+    <small class="text-muted">The URL where users will be redirected when they select this location to order</small>
+</div>
+
 <!-- Publish Field -->
 <div class="form-group col-sm-6">
     <div class="form-check">
