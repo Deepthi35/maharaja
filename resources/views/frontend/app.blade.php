@@ -486,6 +486,14 @@
                             @endphp
                             @foreach($locations as $location)
                                 @if($location->order_url)
+                                    @php
+                                        $locationAddress = '';
+                                        if ($loop->index === 0) {
+                                            $locationAddress = applicationSettings('map-location');
+                                        } elseif ($loop->index === 1) {
+                                            $locationAddress = applicationSettings('location-2-map-location');
+                                        }
+                                    @endphp
                                     <a href="{{ $location->order_url }}" target="_blank" class="location-box">
                                         <div class="location-box-image">
                                             @if($location->image)
@@ -497,8 +505,13 @@
                                             @endif
                                         </div>
                                         <div class="location-box-info">
-                                            <span class="material-symbols-outlined location-box-pin">location_on</span>
-                                            <span class="location-box-name">{{ $location->location_name }}</span>
+                                            <div class="location-box-title">
+                                                <span class="material-symbols-outlined location-box-pin">location_on</span>
+                                                <span class="location-box-name">{{ $location->location_name }}</span>
+                                            </div>
+                                            @if(!empty($locationAddress))
+                                                <div class="location-box-address">{!! $locationAddress !!}</div>
+                                            @endif
                                         </div>
                                     </a>
                                 @endif
@@ -594,11 +607,20 @@
         }
         .location-box-info {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             padding: 1rem 1.25rem;
             width: 100%;
             justify-content: center;
+        }
+        .location-box-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+            width: 100%;
+            flex-wrap: wrap;
         }
         .location-box-pin {
             color: #C2333B;
@@ -608,6 +630,14 @@
             font-size: 1.05rem;
             font-weight: 600;
             color: #F7E8BF;
+        }
+        .location-box-address {
+            color: #ddd;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            text-align: center;
+            width: 100%;
+            margin-top: 0.25rem;
         }
         #location-modal .close {
             position: absolute;

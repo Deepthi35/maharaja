@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Location;
 
 class LocationSeeder extends Seeder
 {
@@ -12,19 +12,27 @@ class LocationSeeder extends Seeder
      */
     public function run(): void
     {
-        $locations = \App\Models\Location::all();
-        
-        foreach ($locations as $location) {
-            // You can set specific URLs for each location here
-            // These are placeholder URLs - update them with your actual order URLs
-            if ($location->id == 1) {
-                $location->order_url = 'https://example.com/order-location-1';
-            } elseif ($location->id == 2) {
-                $location->order_url = 'https://example.com/order-location-2';
-            } else {
-                $location->order_url = null;
-            }
-            $location->save();
+        $locations = [
+            [
+                'location_name' => 'OMAHA',
+                'publish' => 1,
+                'order_url' => 'https://www.clover.com/online-ordering/maharaja-indian-cuisine-omaha?utm_source=web-dashboard&utm_medium=qrcode&utm_campaign=olo-qr-template',
+            ],
+            [
+                'location_name' => 'PAPILLION',
+                'publish' => 1,
+                'order_url' => 'https://example.com/order-location-papillion',
+            ],
+        ];
+
+        foreach ($locations as $locationData) {
+            Location::updateOrCreate(
+                ['location_name' => $locationData['location_name']],
+                [
+                    'publish' => $locationData['publish'],
+                    'order_url' => $locationData['order_url'],
+                ]
+            );
         }
     }
 }
