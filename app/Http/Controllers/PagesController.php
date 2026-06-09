@@ -240,4 +240,10 @@ class PagesController extends Controller
         return view('pages.search-results', compact('blogPosts', 'products', 'search'));
     }
 
+    public function orderNow()
+    {
+        $locations = Location::where('publish', 1)->get();
+        return view('pages.order-now', compact('locations'));
+    }
+
 }

@@ -125,6 +125,7 @@ Route::controller(PagesController::class)->group(function () {
     Route::get('/contact', 'contact');
     Route::get('/careers', 'career');
     Route::get('/our-menu', 'product');
+    Route::get('/order-now', 'orderNow');
     Route::post('/set-location', 'setLocation')->name('set.location');
     Route::get('/products/{category}', 'categoryProduct');
     Route::get('/products-detail/{name}', 'productDetails');
